@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>新疆维吾尔自治区教育考试院 - 初中学业水平考试成绩查询</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#f2f3f7;min-height:100vh;display:flex;flex-direction:column}
+.top-bar{background:#1a357c;color:#fff;padding:6px 16px;font-size:12px;text-align:right;border-bottom:1px solid #152a63}
+.top-bar a{color:#ccd9f0;text-decoration:none;margin-left:12px}
+.header{background:linear-gradient(180deg,#2255a4 0%,#1a3c6e 100%);padding:14px 20px;display:flex;align-items:center;gap:12px}
+.header .emblem{width:44px;height:44px;flex-shrink:0}
+.header .title-group{color:#fff}
+.header .main-title{font-size:18px;font-weight:700;letter-spacing:1px;line-height:1.3}
+.header .sub-title{font-size:12px;color:#b8cef0;letter-spacing:2px}
+.breadcrumb{background:#fff;padding:8px 20px;font-size:12px;color:#666;border-bottom:2px solid #e0e3ea}
+.breadcrumb span{color:#2255a4}
+.main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:28px 16px}
+.card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.06);width:100%;max-width:460px;overflow:hidden}
+.card-header{background:#f8f9fc;border-bottom:2px solid #2255a4;padding:16px 24px;text-align:center}
+.card-header h2{font-size:17px;color:#1a357c;font-weight:700;letter-spacing:1px}
+.card-body{padding:24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:14px;color:#444;margin-bottom:6px;font-weight:500}
+.form-group label .required{color:#d93025;margin-left:2px}
+.form-group input[type="text"]{width:100%;height:42px;border:1px solid #d0d5dd;border-radius:4px;padding:0 12px;font-size:15px;color:#333;outline:none;transition:border-color .2s;background:#fff}
+.form-group input[type="text"]:focus{border-color:#2255a4;box-shadow:0 0 0 2px rgba(34,85,164,0.1)}
+.captcha-row{display:flex;gap:10px;align-items:center}
+.captcha-row input{flex:1}
+.captcha-img{width:100px;height:42px;background:linear-gradient(135deg,#e8edf5,#dce3f0);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#1a357c;letter-spacing:5px;cursor:pointer;user-select:none;border:1px solid #d0d5dd;flex-shrink:0;position:relative;overflow:hidden}
+.captcha-img::before{content:'';position:absolute;width:200%;height:1px;background:rgba(0,0,0,0.06);top:30%;left:-10%;transform:rotate(-8deg)}
+.captcha-img::after{content:'';position:absolute;width:200%;height:1px;background:rgba(0,0,0,0.06);top:65%;left:-10%;transform:rotate(5deg)}
+.btn-submit{width:100%;height:44px;background:linear-gradient(180deg,#3370d6,#2255a4);color:#fff;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;margin-top:8px;letter-spacing:2px;transition:opacity .2s}
+.btn-submit:hover{opacity:.92}
+.btn-submit:active{opacity:.85}
+.card-tip{font-size:12px;color:#999;text-align:center;margin-top:14px;line-height:1.6}
+/* 结果页 */
+.result-img{width:220px;height:220px;margin:0 auto 20px;border-radius:8px;background:center/cover no-repeat;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
+.result-title{font-size:24px;font-weight:800;color:#1a1a1a;text-align:center;line-height:1.5}
+.btn-back{display:block;width:100%;height:42px;background:#fff;color:#555;border:1px solid #d0d5dd;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;margin-top:24px;letter-spacing:1px}
+.footer{background:#1a357c;color:#8aa4d0;text-align:center;padding:16px;font-size:11px;line-height:1.8;flex-shrink:0}
+.footer span{display:block}
+.hidden{display:none!important}
+/* 加载 */
+.loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.88);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.loading-spinner{width:36px;height:36px;border:3px solid #e0e5f0;border-top-color:#2255a4;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:14px;color:#666}
+@media screen and (max-width:400px){
+  .header .main-title{font-size:15px}
+  .card-body{padding:20px 16px}
+  .result-img{width:180px;height:180px}
+  .result-title{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="#">设为首页</a><a href="#">加入收藏</a>
+</div>
+<div class="header">
+  <svg class="emblem" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="#f0c040" stroke-width="2"/><circle cx="24" cy="24" r="18" fill="none" stroke="#f0c040" stroke-width="1.2"/><polygon points="24,8 29,20 42,20 32,27 36,40 24,33 12,40 16,27 6,20 19,20" fill="#f0c040"/></svg>
+  <div class="title-group">
+    <div class="main-title">新疆维吾尔自治区教育考试院</div>
+    <div class="sub-title">初中学业水平考试成绩查询</div>
+  </div>
+</div>
+<div class="breadcrumb">当前位置：<span>首页</span> &gt; <span>公众服务大厅</span> &gt; <span>成绩查询</span> &gt; 初中学业水平考试</div>
+
+<div class="main">
+  <div class="card" id="queryCard">
+    <div class="card-header"><h2>成绩查询</h2></div>
+    <div class="card-body">
+      <div class="form-group">
+        <label>考生姓名<span class="required">*</span></label>
+        <input type="text" id="sname" placeholder="请输入考生姓名" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>准考证号<span class="required">*</span></label>
+        <input type="text" id="sexam" placeholder="请输入准考证号" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>验证码<span class="required">*</span></label>
+        <div class="captcha-row">
+          <input type="text" id="scaptcha" placeholder="请输入验证码" autocomplete="off">
+          <div class="captcha-img" id="captchaBox" onclick="refreshCaptcha()"></div>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="handleQuery()">查 询</button>
+      <div class="card-tip">请输入考生姓名及准考证号，验证码不区分大小写</div>
+    </div>
+  </div>
+
+  <div class="card hidden" id="resultCard">
+    <div class="card-header"><h2>查询结果</h2></div>
+    <div class="card-body">
+      <!--
+        图片替换：找到下方 .result-img 的 background-image，
+        将 url('wenshu.png') 替换为你的文殊菩萨图片链接
+      -->
+      <div class="result-img" style="background-image:url('wenshu.png')"></div>
+      <div class="result-title">不要再内耗了，你一定能考好</div>
+      <button class="btn-back" onclick="goBack()">返回重新查询</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>主办：新疆维吾尔自治区教育考试院</span>
+  <span>Copyright &copy; 2025 新疆维吾尔自治区教育考试院 All Rights Reserved</span>
+</div>
+
+<script>
+function randomCaptcha(){
+  var s='';
+  for(var i=0;i<4;i++) s+=Math.floor(Math.random()*10);
+  return s;
+}
+function refreshCaptcha(){
+  document.getElementById('captchaBox').textContent=randomCaptcha();
+}
+refreshCaptcha();
+
+function handleQuery(){
+  var name=document.getElementById('sname').value.trim();
+  var exam=document.getElementById('sexam').value.trim();
+  if(!name||!exam){alert('请填写完整信息');return;}
+  var overlay=document.createElement('div');
+  overlay.className='loading-overlay';
+  overlay.innerHTML='<div class="loading-spinner"></div><div class="loading-text">数据查询中，请稍候...</div>';
+  document.body.appendChild(overlay);
+  setTimeout(function(){
+    overlay.remove();
+    document.getElementById('queryCard').classList.add('hidden');
+    document.getElementById('resultCard').classList.remove('hidden');
+  },1500);
+}
+
+function goBack(){
+  document.getElementById('resultCard').classList.add('hidden');
+  document.getElementById('queryCard').classList.remove('hidden');
+  document.getElementById('sname').value='';
+  document.getElementById('sexam').value='';
+  document.getElementById('scaptcha').value='';
+  refreshCaptcha();
+}
+</script>
+</body>
+</html>
