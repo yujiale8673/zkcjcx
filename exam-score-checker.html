@@ -3,197 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>新疆维吾尔自治区教育考试院 - 初中学业水平考试成绩查询</title>
+<meta name="format-detection" content="telephone=no">
+<title>新疆维吾尔自治区教育考试院 - 2026年初中学业水平考试成绩查询</title>
 <style>
+:root{--blue:#0e3a6b;--blue-light:#1565c0;--blue-dark:#092847;--bg:#f0f2f5;--card-bg:#fff;--text:#333;--text-secondary:#666;--border:#dcdcdc;--red:#c41230;--gold:#c8960c}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;background:#f2f3f7;min-height:100vh;display:flex;flex-direction:column}
-.top-bar{background:#1a357c;color:#fff;padding:6px 16px;font-size:12px;text-align:right;border-bottom:1px solid #152a63}
-.top-bar a{color:#ccd9f0;text-decoration:none;margin-left:12px}
-.header{background:linear-gradient(180deg,#2255a4 0%,#1a3c6e 100%);padding:14px 20px;display:flex;align-items:center;gap:12px}
-.header .emblem{width:44px;height:44px;flex-shrink:0}
-.header .title-group{color:#fff}
-.header .main-title{font-size:18px;font-weight:700;letter-spacing:1px;line-height:1.3}
-.header .sub-title{font-size:12px;color:#b8cef0;letter-spacing:2px}
-.breadcrumb{background:#fff;padding:8px 20px;font-size:12px;color:#666;border-bottom:2px solid #e0e3ea}
-.breadcrumb span{color:#2255a4}
-.main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:28px 16px}
-.card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,0.06);width:100%;max-width:460px;overflow:hidden}
-.card-header{background:#f8f9fc;border-bottom:2px solid #2255a4;padding:16px 24px;text-align:center}
-.card-header h2{font-size:17px;color:#1a357c;font-weight:700;letter-spacing:1px}
-.card-body{padding:24px}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:14px;color:#444;margin-bottom:6px;font-weight:500}
-.form-group label .required{color:#d93025;margin-left:2px}
-.form-group input[type="text"]{width:100%;height:42px;border:1px solid #d0d5dd;border-radius:4px;padding:0 12px;font-size:15px;color:#333;outline:none;transition:border-color .2s;background:#fff}
-.form-group input[type="text"]:focus{border-color:#2255a4;box-shadow:0 0 0 2px rgba(34,85,164,0.1)}
-.captcha-row{display:flex;gap:10px;align-items:center}
-.captcha-row input{flex:1}
-.captcha-img{width:100px;height:42px;background:linear-gradient(135deg,#e8edf5,#dce3f0);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#1a357c;letter-spacing:5px;cursor:pointer;user-select:none;border:1px solid #d0d5dd;flex-shrink:0;position:relative;overflow:hidden}
-.captcha-img::before{content:'';position:absolute;width:200%;height:1px;background:rgba(0,0,0,0.06);top:30%;left:-10%;transform:rotate(-8deg)}
-.captcha-img::after{content:'';position:absolute;width:200%;height:1px;background:rgba(0,0,0,0.06);top:65%;left:-10%;transform:rotate(5deg)}
-.btn-submit{width:100%;height:44px;background:linear-gradient(180deg,#3370d6,#2255a4);color:#fff;border:none;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer;margin-top:8px;letter-spacing:2px;transition:opacity .2s}
-.btn-submit:hover{opacity:.92}
-.btn-submit:active{opacity:.85}
-.card-tip{font-size:12px;color:#999;text-align:center;margin-top:14px;line-height:1.6}
-/* 结果 */
-.result-header{text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px dashed #e0e3ea}
-.result-header .rname{font-size:17px;font-weight:700;color:#1a1a1a}
-.result-header .rexam{font-size:12px;color:#888;margin-top:4px}
-table{width:100%;border-collapse:collapse;margin-bottom:16px}
-table th,table td{padding:10px 6px;text-align:center;font-size:14px;border-bottom:1px solid #eee}
-table th{background:#f5f7fa;color:#555;font-weight:600;font-size:13px}
-table td{color:#333}
-.total-row td{font-weight:700;font-size:17px;color:#d93025;border-bottom:none;padding-top:16px}
-.btn-row{display:flex;gap:10px;margin-top:8px}
-.btn-back,.btn-print{flex:1;height:42px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;border:1px solid #d0d5dd;letter-spacing:1px}
-.btn-back{background:#fff;color:#555}
-.btn-print{background:linear-gradient(180deg,#3370d6,#2255a4);color:#fff;border-color:#2255a4}
-.note{font-size:12px;color:#aaa;text-align:center;margin-top:16px}
-.hidden{display:none!important}
-/* 加载 */
-.loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.88);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.loading-spinner{width:36px;height:36px;border:3px solid #e0e5f0;border-top-color:#2255a4;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:14px}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+.header{background:linear-gradient(180deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff;text-align:center;padding:28px 16px 22px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.06) 0%,transparent 70%);pointer-events:none}
+.header .emblem{width:50px;height:50px;margin:0 auto 10px;display:block;position:relative;z-index:1}
+.header h1{font-size:22px;font-weight:600;letter-spacing:2px;position:relative;z-index:1;font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif}
+.header .subtitle{font-size:13px;margin-top:6px;opacity:.85;letter-spacing:1px;position:relative;z-index:1}
+.header .notice-bar{background:rgba(255,255,255,.12);border-radius:4px;padding:6px 14px;font-size:12px;margin-top:10px;display:inline-block;position:relative;z-index:1}
+.main{flex:1;padding:20px 16px 30px;max-width:500px;width:100%;margin:0 auto}
+.card{background:var(--card-bg);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:28px 22px 24px}
+.card .card-title{font-size:18px;font-weight:600;color:var(--blue);text-align:center;margin-bottom:6px;letter-spacing:1px;font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif}
+.card .card-desc{font-size:13px;color:var(--text-secondary);text-align:center;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px}
+.form-group label .required{color:var(--red);margin-left:2px}
+.form-group input{width:100%;height:44px;border:1px solid var(--border);border-radius:4px;padding:0 12px;font-size:15px;color:var(--text);background:#fafbfc;transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none}
+.form-group input:focus{border-color:var(--blue-light);box-shadow:0 0 0 2px rgba(21,101,192,.12);background:#fff}
+.form-group input::placeholder{color:#bbb;font-size:13px}
+.captcha-row{display:flex;gap:10px}
+.captcha-row .form-group{flex:1;margin-bottom:0}
+.captcha-img{width:100px;height:44px;background:linear-gradient(135deg,#e8f0fe 0%,#d4e4fc 100%);border:1px solid var(--border);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--blue);letter-spacing:4px;user-select:none;font-family:"Courier New",monospace;font-style:italic;position:relative;flex-shrink:0}
+.captcha-img::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none}
+.captcha-hint{font-size:11px;color:var(--text-secondary);margin-top:4px;cursor:pointer;user-select:none}
+.btn-query{width:100%;height:46px;background:linear-gradient(180deg,#1a6bc4 0%,#0e4a8a 100%);color:#fff;border:none;border-radius:4px;font-size:16px;font-weight:600;letter-spacing:3px;cursor:pointer;margin-top:6px;transition:opacity .2s,transform .1s}
+.btn-query:active{transform:scale(.98);opacity:.9}
+.hint-text{font-size:12px;color:#999;text-align:center;margin-top:16px;line-height:1.6}
+/* result */
+.result-card{background:var(--card-bg);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
+.result-header{background:#f8fafc;border-bottom:2px solid var(--blue);text-align:center;padding:10px 16px}
+.result-header .r-title{font-size:17px;font-weight:600;color:var(--blue);letter-spacing:1px;font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif}
+.result-body{padding:16px}
+.info-row{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--text);margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed #e0e0e0}
+.info-row .info-label{color:var(--text-secondary);margin-right:3px}
+.score-table{width:100%;border-collapse:collapse;font-size:14px}
+.score-table th{background:#f0f4f8;color:var(--blue);padding:10px 6px;font-weight:600;font-size:13px;letter-spacing:1px;border:1px solid #dce3ea}
+.score-table td{padding:10px 6px;text-align:center;border:1px solid #e8ecf0;color:var(--text)}
+.score-table .score-value{font-weight:700;font-size:16px;color:#e67700}
+.score-table .total-row td{background:linear-gradient(180deg,#fff8e1 0%,#ffecb3 100%);font-weight:700;font-size:20px;color:#c62828;border-top:2px solid var(--gold)}
+.score-table .total-label{font-size:15px}
+.seal-area{text-align:right;margin-top:16px}
+.seal{display:inline-block;width:85px;height:85px;border:3px solid var(--red);border-radius:50%;color:var(--red);font-size:11px;font-weight:700;text-align:center;line-height:1.3;padding-top:14px;letter-spacing:2px;opacity:.5;transform:rotate(-15deg);font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif;user-select:none}
+.anti-fake{font-size:11px;color:#bbb;text-align:center;margin-top:12px;padding:12px 0 6px;border-top:1px dashed #e0e0e0}
+.btn-row{display:flex;gap:10px;padding:0 16px 18px;margin-top:14px}
+.btn-back,.btn-print{flex:1;height:40px;border-radius:4px;font-size:14px;cursor:pointer;letter-spacing:1px;border:none;font-weight:500}
+.btn-back{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+.btn-print{background:var(--blue);color:#fff}
+.btn-back:active,.btn-print:active{transform:scale(.98);opacity:.85}
+.footer{background:#e8eaed;text-align:center;padding:16px;font-size:12px;color:#999;line-height:1.8;border-top:1px solid #ddd}
+.footer .divider{margin:0 6px;color:#ccc}
+.loading-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.93);z-index:9999;flex-direction:column;align-items:center;justify-content:center}
+.loading-overlay.show{display:flex}
+.spinner{width:42px;height:42px;border:3px solid #e0e0e0;border-top:3px solid var(--blue-light);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:14px;color:#666}
-.footer{background:#1a357c;color:#8aa4d0;text-align:center;padding:16px;font-size:11px;line-height:1.8;flex-shrink:0}
-.footer span{display:block}
-@media screen and (max-width:400px){
-  .header .main-title{font-size:15px}
-  .card-body{padding:20px 16px}
-}
+.loading-text{margin-top:16px;font-size:14px;color:var(--text-secondary);letter-spacing:1px}
+.toast{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.78);color:#fff;padding:12px 24px;border-radius:6px;font-size:14px;z-index:10000;display:none;letter-spacing:1px}
+@media(max-width:480px){.header{padding:20px 12px 16px}.header h1{font-size:18px;letter-spacing:1px}.header .subtitle{font-size:11px}.header .emblem{width:40px;height:40px}.card{padding:20px 14px 18px;border-radius:6px}.card .card-title{font-size:16px}.score-table{font-size:12px}.score-table th,.score-table td{padding:6px 3px}.score-table .score-value{font-size:14px}.score-table .total-row td{font-size:16px}.info-row{font-size:12px}.seal{width:70px;height:70px;font-size:10px;padding-top:10px}}@media print{body{background:#fff}.header,.footer,.btn-row,.card,#querySection{display:none!important}.main{padding:0;max-width:100%}.result-card{box-shadow:none;border:none}.seal{opacity:.6}}
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <a href="#">设为首页</a><a href="#">加入收藏</a>
-</div>
 <div class="header">
-  <svg class="emblem" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="#f0c040" stroke-width="2"/><circle cx="24" cy="24" r="18" fill="none" stroke="#f0c040" stroke-width="1.2"/><polygon points="24,8 29,20 42,20 32,27 36,40 24,33 12,40 16,27 6,20 19,20" fill="#f0c040"/></svg>
-  <div class="title-group">
-    <div class="main-title">新疆维吾尔自治区教育考试院</div>
-    <div class="sub-title">初中学业水平考试成绩查询</div>
-  </div>
+  <svg class="emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="48" fill="none" stroke="#fff" stroke-width="3" opacity=".9"/>
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="1" opacity=".6"/>
+    <text x="50" y="62" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="serif">教育</text>
+    <rect x="28" y="25" width="44" height="28" rx="3" fill="none" stroke="#fff" stroke-width="2.5"/>
+    <line x1="28" y1="33" x2="72" y2="33" stroke="#fff" stroke-width="1.5"/>
+    <rect x="38" y="36" width="24" height="12" rx="2" fill="#fff" opacity=".8"/>
+  </svg>
+  <h1>新疆维吾尔自治区教育考试院</h1>
+  <div class="subtitle">Xinjiang Uygur Autonomous Region Education Examinations Authority</div>
+  <div class="notice-bar">2026年初中学业水平考试 成绩查询系统</div>
 </div>
-<div class="breadcrumb">当前位置：<span>首页</span> &gt; <span>公众服务大厅</span> &gt; <span>成绩查询</span> &gt; 初中学业水平考试</div>
 
 <div class="main">
-  <div class="card" id="queryCard">
-    <div class="card-header"><h2>成绩查询</h2></div>
-    <div class="card-body">
+  <div id="querySection">
+    <div class="card">
+      <div class="card-title">2026年中考成绩查询</div>
+      <div class="card-desc">请输入考生信息进行查询</div>
       <div class="form-group">
         <label>考生姓名<span class="required">*</span></label>
-        <input type="text" id="sname" placeholder="请输入考生姓名" autocomplete="off">
+        <input type="text" id="inputName" placeholder="请输入考生姓名" maxlength="20" autocomplete="off">
       </div>
       <div class="form-group">
         <label>准考证号<span class="required">*</span></label>
-        <input type="text" id="sexam" placeholder="请输入准考证号" autocomplete="off">
+        <input type="text" id="inputExamNo" placeholder="请输入12位准考证号" maxlength="12" autocomplete="off" inputmode="numeric">
       </div>
-      <div class="form-group">
+      <div style="margin-bottom:18px;">
         <label>验证码<span class="required">*</span></label>
         <div class="captcha-row">
-          <input type="text" id="scaptcha" placeholder="请输入验证码" autocomplete="off">
-          <div class="captcha-img" id="captchaBox" onclick="refreshCaptcha()"></div>
+          <div class="form-group" style="margin-bottom:0;">
+            <input type="text" id="inputCaptcha" placeholder="请输入验证码" maxlength="4" autocomplete="off" inputmode="numeric">
+          </div>
+          <div class="captcha-img" id="captchaImg" onclick="refreshCaptcha()" title="点击刷新验证码"></div>
         </div>
+        <div class="captcha-hint" onclick="refreshCaptcha()">看不清？点击刷新验证码</div>
       </div>
-      <button class="btn-submit" onclick="handleQuery()">查 询</button>
-      <div class="card-tip">请输入考生姓名及准考证号，验证码不区分大小写</div>
+      <button class="btn-query" onclick="doQuery()">查 询 成 绩</button>
+      <div class="hint-text">查询时间：每日 08:00 - 22:00<br>如遇查询高峰，请稍后再试</div>
     </div>
   </div>
-
-  <div class="card hidden" id="resultCard">
-    <div class="card-header"><h2>成绩详情</h2></div>
-    <div class="card-body">
-      <div class="result-header">
-        <div class="rname" id="rname"></div>
-        <div class="rexam" id="rexam"></div>
-      </div>
-      <table id="scoreTable"></table>
-      <div class="btn-row">
-        <button class="btn-back" onclick="goBack()">返回重新查询</button>
-        <button class="btn-print" onclick="window.print()">打印成绩单</button>
-      </div>
-      <div class="note">本查询结果仅供参考，最终成绩以官方正式通知为准</div>
-    </div>
-  </div>
+  <div id="resultSection" style="display:none;"></div>
 </div>
 
 <div class="footer">
-  <span>主办：新疆维吾尔自治区教育考试院</span>
-  <span>Copyright &copy; 2025 新疆维吾尔自治区教育考试院 All Rights Reserved</span>
+  主办：新疆维吾尔自治区教育考试院<span class="divider">|</span>承办：新疆教育信息技术中心<br>
+  地址：乌鲁木齐市天山区新民路25号<span class="divider">|</span>邮编：830002<br>
+  Copyright &copy; 2026 新疆维吾尔自治区教育考试院 版权所有
 </div>
 
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text">正在查询，请稍候…</div>
+</div>
+<div class="toast" id="toast"></div>
+
 <script>
-function randomCaptcha(){var s='';for(var i=0;i<4;i++) s+=Math.floor(Math.random()*10);return s}
-function refreshCaptcha(){document.getElementById('captchaBox').textContent=randomCaptcha()}
+function refreshCaptcha(){var d=[],i;for(i=0;i<4;i++)d.push(Math.floor(Math.random()*10));var h='',c=d.join('').split('');for(i=0;i<c.length;i++){var r=(Math.random()-.5)*28,R=Math.floor(Math.random()*60+20),G=Math.floor(Math.random()*60+40),B=Math.floor(Math.random()*100+80);h+='<span style="display:inline-block;transform:rotate('+r+'deg);color:rgb('+R+','+G+','+B+');">'+c[i]+'</span>'}document.getElementById('captchaImg').innerHTML=h}
 refreshCaptcha();
-
-function hashStr(str){var h=0;for(var i=0;i<str.length;i++){h=((h<<5)-h)+str.charCodeAt(i);h|=0}return Math.abs(h)}
-function seededRandom(seed){var s=seed;return function(){s=(s*9301+49297)%233280;return s/233280}}
-
-function generateScores(examId){
-  var seed=hashStr(examId),rand=seededRandom(seed);
-  var subs=[
-    {name:'语文',full:150},{name:'数学',full:150},{name:'英语',full:150},
-    {name:'物理·化学（合卷）',full:150},{name:'道德与法治·历史（合卷）',full:150},
-    {name:'体育与健康',full:50}
-  ];
-  var results=[],raw=0,totalMin=650,totalMax=720;
-  for(var i=0;i<subs.length;i++){
-    var s=subs[i],min,max;
-    if(s.full===50){min=45;max=50}
-    else{min=Math.floor(s.full*0.85);max=s.full-1}
-    var score=Math.floor(min+rand()*(max-min+1));
-    if(score>s.full)score=s.full;
-    results.push({name:s.name,full:s.full,score:score});
-    raw+=score;
-  }
-  if(raw<totalMin||raw>totalMax){
-    var target=raw<totalMin?(totalMin+Math.floor(rand()*20)):(totalMax-Math.floor(rand()*20));
-    var diff=target-raw,adj=results.slice(0,5),step=diff>0?1:-1;
-    for(var j=0;j<Math.abs(diff);j++){
-      var idx=j%adj.length;
-      adj[idx].score+=step;
-      if(adj[idx].score>adj[idx].full)adj[idx].score=adj[idx].full;
-    }
-    raw=0;for(var k=0;k<results.length;k++)raw+=results[k].score;
-  }
-  return{subjects:results,total:raw};
-}
-
-function handleQuery(){
-  var name=document.getElementById('sname').value.trim();
-  var exam=document.getElementById('sexam').value.trim();
-  if(!name||!exam){alert('请填写完整信息');return}
-  var overlay=document.createElement('div');
-  overlay.className='loading-overlay';
-  overlay.innerHTML='<div class="loading-spinner"></div><div class="loading-text">成绩查询中，请稍候...</div>';
-  document.body.appendChild(overlay);
-  setTimeout(function(){
-    overlay.remove();
-    var data=generateScores(exam);
-    document.getElementById('rname').textContent='考生：'+name;
-    document.getElementById('rexam').textContent='准考证号：'+exam;
-    var h='<tr><th>科目</th><th>满分</th><th>得分</th></tr>';
-    for(var i=0;i<data.subjects.length;i++){
-      var d=data.subjects[i];
-      h+='<tr><td>'+d.name+'</td><td>'+d.full+'</td><td>'+d.score+'</td></tr>';
-    }
-    h+='<tr class="total-row"><td colspan="2">总分</td><td>'+data.total+'</td></tr>';
-    document.getElementById('scoreTable').innerHTML=h;
-    document.getElementById('queryCard').classList.add('hidden');
-    document.getElementById('resultCard').classList.remove('hidden');
-  },1500);
-}
-
-function goBack(){
-  document.getElementById('resultCard').classList.add('hidden');
-  document.getElementById('queryCard').classList.remove('hidden');
-  document.getElementById('sname').value='';
-  document.getElementById('sexam').value='';
-  document.getElementById('scaptcha').value='';
-  refreshCaptcha();
-}
+function simpleHash(s){var h=0,i;for(i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}return Math.abs(h)}
+function seededScore(seed,min,max){var range=max-min,base=min+(seed%(range+1)),shift=(seed%9)-2,val=base+shift;if(val<min)val=min+(seed%5);if(val>max)val=max;return val}
+function generateScores(examNo){var h=simpleHash(examNo),s1=(h>>>0)&0xFFFF,s2=(h>>>8)&0xFFFF,s3=(h>>>16)&0xFFFF,s4=(h>>>3)&0xFFFF,s5=(h>>>11)&0xFFFF,s6=(h>>>19)&0xFFFF,s7=(h>>>7)&0xFFFF,s8=(h>>>15)&0xFFFF;var yuwen=seededScore(s1,112,146),shuxue=seededScore(s2,108,148),yingyu=seededScore(s3,110,147),wuli=seededScore(s4,65,89),huaxue=seededScore(s5,42,59),daofa=seededScore(s6,58,74),lishi=seededScore(s7,56,74),tiyu=seededScore(s8,42,50);var lihe=wuli+huaxue,zhengshi=daofa+lishi,total=yuwen+shuxue+yingyu+lihe+zhengshi+tiyu;if(total<650){var diff=650-total;yuwen+=Math.floor(diff*.2);shuxue+=Math.floor(diff*.2);yingyu+=Math.floor(diff*.2);daofa+=Math.floor(diff*.15);lishi+=Math.floor(diff*.15);tiyu+=Math.ceil(diff*.1);if(yuwen>150)yuwen=150;if(shuxue>150)shuxue=150;if(yingyu>150)yingyu=150;if(daofa>75)daofa=75;if(lishi>75)lishi=75;if(tiyu>50)tiyu=50;lihe=wuli+huaxue;zhengshi=daofa+lishi;total=yuwen+shuxue+yingyu+lihe+zhengshi+tiyu}return{yuwen:yuwen,shuxue:shuxue,yingyu:yingyu,wuli:wuli,huaxue:huaxue,lihe:lihe,daofa:daofa,lishi:lishi,zhengshi:zhengshi,tiyu:tiyu,total:total}}
+function genAntiFake(examNo,scores){var h=simpleHash(examNo+scores.total);return'XJ2026ZK'+(h%1000000).toString().padStart(6,'0')}
+function showToast(m,d){var e=document.getElementById('toast');e.textContent=m;e.style.display='block';setTimeout(function(){e.style.display='none'},d||2000)}
+function doQuery(){var n=document.getElementById('inputName').value.trim(),e=document.getElementById('inputExamNo').value.trim(),c=document.getElementById('inputCaptcha').value.trim();if(!n){showToast('请输入考生姓名');return}if(!e){showToast('请输入准考证号');return}if(!c){showToast('请输入验证码');return}var o=document.getElementById('loadingOverlay');o.classList.add('show');setTimeout(function(){o.classList.remove('show');showResult(n,e)},1200+Math.floor(Math.random()*900))}
+function showResult(name,examNo){var scores=generateScores(examNo),antiFake=genAntiFake(examNo,scores),now=new Date(),qt=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0'),gender=simpleHash(examNo+name+'g')%2===0?'男':'女';document.getElementById('querySection').style.display='none';var rs=document.getElementById('resultSection');rs.style.display='block';rs.innerHTML='<div class="result-card"><div class="result-header"><div class="r-title">成绩详情</div></div><div class="result-body"><div class="info-row"><span><span class="info-label">准考证号：</span>'+esc(examNo)+'</span><span><span class="info-label">姓名：</span>'+esc(name)+'</span><span><span class="info-label">性别：</span>'+gender+'</span><span><span class="info-label">查询时间：</span>'+qt+'</span></div><table class="score-table"><thead><tr><th>科目</th><th>成绩</th><th>满分</th></tr></thead><tbody><tr><td>语文</td><td class="score-value">'+scores.yuwen+'</td><td>150</td></tr><tr><td>数学</td><td class="score-value">'+scores.shuxue+'</td><td>150</td></tr><tr><td>英语</td><td class="score-value">'+scores.yingyu+'</td><td>150</td></tr><tr><td>物理·化学（合卷）</td><td class="score-value">'+scores.lihe+'</td><td>150</td></tr><tr><td style="font-size:12px;color:#888;padding:3px">&nbsp;&nbsp;物理</td><td style="font-size:12px;color:#888">'+scores.wuli+'</td><td>90</td></tr><tr><td style="font-size:12px;color:#888;padding:3px">&nbsp;&nbsp;化学</td><td style="font-size:12px;color:#888">'+scores.huaxue+'</td><td>60</td></tr><tr><td>道德与法治·历史（合卷）</td><td class="score-value">'+scores.zhengshi+'</td><td>150</td></tr><tr><td style="font-size:12px;color:#888;padding:3px">&nbsp;&nbsp;道德与法治</td><td style="font-size:12px;color:#888">'+scores.daofa+'</td><td>75</td></tr><tr><td style="font-size:12px;color:#888;padding:3px">&nbsp;&nbsp;历史</td><td style="font-size:12px;color:#888">'+scores.lishi+'</td><td>75</td></tr><tr><td>体育与健康</td><td class="score-value">'+scores.tiyu+'</td><td>50</td></tr><tr class="total-row"><td class="total-label">总 分</td><td>'+scores.total+'</td><td>800</td></tr></tbody></table><div class="seal-area"><div class="seal">新疆维吾尔自治区<br>教育考试院<br>成绩专用章</div></div><div class="anti-fake">防伪查询编号：'+antiFake+'<br>本页面仅供祝福娱乐，最终成绩以各地（州、市）教育局下发为准</div></div></div><div class="btn-row"><button class="btn-back" onclick="goBack()">返回查询</button><button class="btn-print" onclick="window.print()">打印成绩单</button></div>'}
+function goBack(){document.getElementById('resultSection').style.display='none';document.getElementById('querySection').style.display='block'}
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&document.getElementById('resultSection').style.display==='none')doQuery()})
 </script>
 </body>
 </html>
