@@ -6,16 +6,35 @@
 <meta name="format-detection" content="telephone=no">
 <title>文殊菩萨护佑 - 中考祈福</title>
 <style>
-:root{--blue:#0e3a6b;--blue-dark:#092847;--bg:#f0f2f5;--text:#333;--gold:#c8960c}
+:root{--blue:#0e3a6b;--blue-light:#1565c0;--blue-dark:#092847;--bg:#f0f2f5;--card-bg:#fff;--text:#333;--text-secondary:#666;--border:#dcdcdc;--red:#c41230}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
 .header{background:linear-gradient(180deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff;text-align:center;padding:28px 16px 22px;position:relative;overflow:hidden}
 .header::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.06) 0%,transparent 70%);pointer-events:none}
 .header .emblem{width:50px;height:50px;margin:0 auto 10px;display:block;position:relative;z-index:1}
 .header h1{font-size:22px;font-weight:600;letter-spacing:2px;position:relative;z-index:1;font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif}
+.header .subtitle{font-size:13px;margin-top:6px;opacity:.85;letter-spacing:1px;position:relative;z-index:1}
 .header .notice-bar{background:rgba(255,255,255,.12);border-radius:4px;padding:6px 14px;font-size:12px;margin-top:10px;display:inline-block;position:relative;z-index:1}
 .main{flex:1;padding:20px 16px 30px;max-width:500px;width:100%;margin:0 auto}
-.bless-card{background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
+.card{background:var(--card-bg);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:28px 22px 24px}
+.card .card-title{font-size:18px;font-weight:600;color:var(--blue);text-align:center;margin-bottom:6px;letter-spacing:1px;font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif}
+.card .card-desc{font-size:13px;color:var(--text-secondary);text-align:center;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px}
+.form-group label .required{color:var(--red);margin-left:2px}
+.form-group input{width:100%;height:44px;border:1px solid var(--border);border-radius:4px;padding:0 12px;font-size:15px;color:var(--text);background:#fafbfc;transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none}
+.form-group input:focus{border-color:var(--blue-light);box-shadow:0 0 0 2px rgba(21,101,192,.12);background:#fff}
+.form-group input::placeholder{color:#bbb;font-size:13px}
+.captcha-row{display:flex;gap:10px}
+.captcha-row .form-group{flex:1;margin-bottom:0}
+.captcha-img{width:100px;height:44px;background:linear-gradient(135deg,#e8f0fe 0%,#d4e4fc 100%);border:1px solid var(--border);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--blue);letter-spacing:4px;user-select:none;font-family:"Courier New",monospace;font-style:italic;position:relative;flex-shrink:0}
+.captcha-img::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none}
+.captcha-hint{font-size:11px;color:var(--text-secondary);margin-top:4px;cursor:pointer;user-select:none}
+.btn-query{width:100%;height:46px;background:linear-gradient(180deg,#1a6bc4 0%,#0e4a8a 100%);color:#fff;border:none;border-radius:4px;font-size:16px;font-weight:600;letter-spacing:3px;cursor:pointer;margin-top:6px;transition:opacity .2s,transform .1s}
+.btn-query:active{transform:scale(.98);opacity:.9}
+.hint-text{font-size:12px;color:#999;text-align:center;margin-top:16px;line-height:1.6}
+/* result */
+.bless-card{background:var(--card-bg);border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden}
 .bless-img{text-align:center;padding:30px 16px 10px;background:linear-gradient(180deg,#fff8e7 0%,#fff3d0 40%,#fef5e7 100%);position:relative;overflow:hidden}
 .bless-img::before{content:'';position:absolute;top:50%;left:50%;width:300px;height:300px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,200,50,.15) 0%,rgba(255,200,50,.06) 40%,transparent 70%);pointer-events:none}
 .bless-img img{width:100%;max-width:320px;position:relative;z-index:1}
@@ -24,9 +43,19 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅�
 .bless-text .big{font-size:22px;font-weight:700;color:#8b0000;letter-spacing:2px;font-family:"STSongti-SC","Songti SC","SimSun","宋体",serif;margin-bottom:8px}
 .bless-text .msg{font-size:15px;color:#5d4037;letter-spacing:1px}
 .bless-text .msg .hl{font-weight:700;color:#b71c1c;font-size:16px}
+.info-line{text-align:center;font-size:13px;color:#999;padding:0 16px 16px;border-bottom:1px dashed #e0e0e0;margin-bottom:6px}
+.btn-row{display:flex;gap:10px;padding:0 16px 18px}
+.btn-back{flex:1;height:40px;border-radius:4px;font-size:14px;cursor:pointer;letter-spacing:1px;border:1px solid var(--blue);background:#fff;color:var(--blue);font-weight:500}
+.btn-back:active{transform:scale(.98);opacity:.85}
 .footer{background:#e8eaed;text-align:center;padding:16px;font-size:12px;color:#999;line-height:1.8;border-top:1px solid #ddd;margin-top:auto}
 .footer .divider{margin:0 6px;color:#ccc}
-@media(max-width:480px){.header{padding:20px 12px 16px}.header h1{font-size:18px}.header .emblem{width:40px;height:40px}.bless-img{padding:20px 12px 8px}.bless-img img{max-width:260px}.bless-text .big{font-size:18px}.bless-text .msg{font-size:13px}}
+.loading-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.93);z-index:9999;flex-direction:column;align-items:center;justify-content:center}
+.loading-overlay.show{display:flex}
+.spinner{width:42px;height:42px;border:3px solid #e0e0e0;border-top:3px solid var(--blue-light);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{margin-top:16px;font-size:14px;color:var(--text-secondary);letter-spacing:1px}
+.toast{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.78);color:#fff;padding:12px 24px;border-radius:6px;font-size:14px;z-index:10000;display:none;letter-spacing:1px}
+@media(max-width:480px){.header{padding:20px 12px 16px}.header h1{font-size:18px}.header .emblem{width:40px;height:40px}.card{padding:20px 14px 18px;border-radius:6px}.card .card-title{font-size:16px}.bless-img{padding:20px 12px 8px}.bless-img img{max-width:260px}.bless-text .big{font-size:18px}.bless-text .msg{font-size:13px}}
 </style>
 </head>
 <body>
@@ -40,27 +69,38 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅�
     <rect x="38" y="36" width="24" height="12" rx="2" fill="#fff" opacity=".8"/>
   </svg>
   <h1>新疆维吾尔自治区教育考试院</h1>
+  <div class="subtitle">Xinjiang Uygur Autonomous Region Education Examinations Authority</div>
   <div class="notice-bar">2026年初中学业水平考试 祈福专区</div>
 </div>
 
 <div class="main">
-  <div class="bless-card">
-    <div class="bless-img">
-      <img src="wenshu.png" alt="文殊菩萨">
-    </div>
-    <div class="bless-title">文殊菩萨护佑 智慧增长</div>
-    <div class="bless-text">
-      <div class="big">🌸 恭喜你，你真的很棒！</div>
-      <div class="msg">
-        不要紧张，<span class="hl">不要内耗</span>。<br>
-        你付出的每一分努力，都不会白费。<br>
-        成绩只是数字，而你远不止于此。<br>
-        <span class="hl">你一定能考好！</span><br>
-        愿文殊菩萨的智慧之剑，斩断一切烦恼与焦虑。<br>
-        愿你的未来，星光璀璨，金榜题名。
+  <div id="querySection">
+    <div class="card">
+      <div class="card-title">文殊菩萨祈福</div>
+      <div class="card-desc">请输入考生信息，领取专属祝福</div>
+      <div class="form-group">
+        <label>考生姓名<span class="required">*</span></label>
+        <input type="text" id="inputName" placeholder="请输入考生姓名" maxlength="20" autocomplete="off">
       </div>
+      <div class="form-group">
+        <label>准考证号<span class="required">*</span></label>
+        <input type="text" id="inputExamNo" placeholder="请输入12位准考证号" maxlength="12" autocomplete="off" inputmode="numeric">
+      </div>
+      <div style="margin-bottom:18px;">
+        <label>验证码<span class="required">*</span></label>
+        <div class="captcha-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <input type="text" id="inputCaptcha" placeholder="请输入验证码" maxlength="4" autocomplete="off" inputmode="numeric">
+          </div>
+          <div class="captcha-img" id="captchaImg" onclick="refreshCaptcha()" title="点击刷新验证码"></div>
+        </div>
+        <div class="captcha-hint" onclick="refreshCaptcha()">看不清？点击刷新验证码</div>
+      </div>
+      <button class="btn-query" onclick="doQuery()">领 取 祝 福</button>
+      <div class="hint-text">心诚则灵，认真填写哦</div>
     </div>
   </div>
+  <div id="resultSection" style="display:none;"></div>
 </div>
 
 <div class="footer">
@@ -69,5 +109,21 @@ body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅�
   Copyright &copy; 2026 新疆维吾尔自治区教育考试院 版权所有
 </div>
 
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text">正在请求文殊菩萨加持…</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+function refreshCaptcha(){var d=[],i;for(i=0;i<4;i++)d.push(Math.floor(Math.random()*10));var h='',c=d.join('').split('');for(i=0;i<c.length;i++){var r=(Math.random()-.5)*28,R=Math.floor(Math.random()*60+20),G=Math.floor(Math.random()*60+40),B=Math.floor(Math.random()*100+80);h+='<span style="display:inline-block;transform:rotate('+r+'deg);color:rgb('+R+','+G+','+B+');">'+c[i]+'</span>'}document.getElementById('captchaImg').innerHTML=h}
+refreshCaptcha();
+function showToast(m,d){var e=document.getElementById('toast');e.textContent=m;e.style.display='block';setTimeout(function(){e.style.display='none'},d||2000)}
+function doQuery(){var n=document.getElementById('inputName').value.trim(),e=document.getElementById('inputExamNo').value.trim(),c=document.getElementById('inputCaptcha').value.trim();if(!n){showToast('请输入考生姓名');return}if(!e){showToast('请输入准考证号');return}if(!c){showToast('请输入验证码');return}var o=document.getElementById('loadingOverlay');o.classList.add('show');setTimeout(function(){o.classList.remove('show');showBlessing(n,e)},1500+Math.floor(Math.random()*800))}
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function showBlessing(name,examNo){document.getElementById('querySection').style.display='none';var rs=document.getElementById('resultSection');rs.style.display='block';rs.innerHTML='<div class="bless-card"><div class="bless-img"><img src="wenshu.png" alt="文殊菩萨"></div><div class="bless-title">文殊菩萨护佑 智慧增长</div><div class="info-line">考生：'+esc(name)+'&nbsp;&nbsp;|&nbsp;&nbsp;准考证号：'+esc(examNo)+'</div><div class="bless-text"><div class="big">🌸 恭喜你，你真的很棒！</div><div class="msg">不要紧张，<span class="hl">不要内耗</span>。<br>你付出的每一分努力，都不会白费。<br>成绩只是数字，而你远不止于此。<br><span class="hl">你一定能考好！</span><br>愿文殊菩萨的智慧之剑，斩断一切烦恼与焦虑。<br>愿你的未来，星光璀璨，金榜题名。</div></div><div class="btn-row"><button class="btn-back" onclick="goBack()">返回</button></div></div>'}
+function goBack(){document.getElementById('resultSection').style.display='none';document.getElementById('querySection').style.display='block'}
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&document.getElementById('resultSection').style.display==='none')doQuery()})
+</script>
 </body>
 </html>
